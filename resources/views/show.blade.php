@@ -46,6 +46,52 @@
 
         </div>
     </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" id="sample_form" method="post" class="form-horizontal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span id="form_result"></span>
+                    <div class="form-group">
+                        <label>Name :</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>title :</label>
+                        <input type="text" name="title" id="title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <textarea name="desc" id="desc" cols="30" rows="5" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price :</label>
+                        <input type="number" name="price" id="price" class="form-control">
+                    </div>
+                    <input type="hidden" name="action" id="action" value="add"/>
+                    <input type="hidden" name="hidden_id" id="hidden_id" value="add"/>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="action_button" id="action_button" value="Add" class="btn btn-info"/>
+{{--                    <button type="button" class="btn btn-primary">Save changes</button>--}}
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
 </body>
 <script type="text/javascript">
@@ -63,6 +109,18 @@
                 {data:'action',name:'price',orderable:false,serachable:false},
             ]
         });
+        $('#create-record').click(function (){
+            $('.modal-title').text('Add new Product');
+            $('#action_button').val('Add');
+            $('#action').val('Add');
+            $('#form_result').html('');
+
+            $('#formModal').modal('show');
+        })
+        $('#sample_form').on('submit',function (event){
+            event.preventDefault();
+            alert('Date submited');
+        })
     });
 </script>
 </html>
